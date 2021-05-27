@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-4 offset-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-center"><%= @brand.name %></h5>
+
+        <hr>
+
+        <h6>Products :</h6>
+        <% if @brand.product.count > 0 %>
+        <ul class="list-group list-group-flush">
+          <% @brand.product.each do |product| %>
+          <li class="list-group-item d-flex align-items-center justify-content-between">
+            <span><%= product.name %>, <%= product.barcode %></span>
+            <%= link_to 'Show Product', product, class: 'badge bg-info text-white text-decoration-none' %>
+          </li>
+          <% end %>
+        </ul>
+        <% else%>
+        <p class="lead">No product has been assigned to this brand.</p>
+        <% end %>
+
+        <hr>
+
+        <%= link_to 'Back', brands_path, class: 'btn btn-link' %>
+        <%= link_to 'Edit', edit_brand_path(@brand), class: 'btn btn-warning' %>
+      </div>
+    </div>
+  </div>
+</div>
